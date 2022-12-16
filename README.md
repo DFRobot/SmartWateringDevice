@@ -4,6 +4,7 @@
 
 Most of us like having green plants in our homes or offices because they can brighten up our living space, reduce fatigue and stress, improve our moods and productivity, and clean indoor air. However, taking care of them is no easy feat. I grew a potted plant but it ended up with yellow and dead leaves due to water shortage. To avoid following the same old disastrous road, I decided to make an auto plant watering device to save my new plants.
 The device mainly includes a water storage container, an electric valve to control water flow, a soil humidity sensor to determine whether the valve will open to water plants, and a liquid level sensor installed outside the container to detect if the liquid level falls under the threshold, which means the container is nearly empty. And I only need to refill it when I receive the water shortage prompt.
+![image](https://user-images.githubusercontent.com/65546290/208018949-4696d235-1d7b-4c26-afb3-ac5e79d6cb0e.png)
 
 # HARDWARE LIST
 * ESP32-E IoT Microcontroller
