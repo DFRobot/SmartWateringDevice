@@ -34,23 +34,24 @@ int intervals = (AirValue - WaterValue) / 3;
 int soilMoistureValue,humidity,humiditys = 0;  
 bool condition = false;
 
+//Send soil moisture value to virtual pin (V6) every second
 void myTimerEvent() {
   Blynk.virtualWrite(V6, humiditys);
   // Blynk.virtualWrite(V2, "www");
   if (digitalRead(inPin) == 0 && !condition) {
-    Blynk.virtualWrite(V3, "Water shortage");
-    condition=true;
+  Blynk.virtualWrite(V3, "Water shortage");
+  condition=true;
   }
-    if (digitalRead(inPin) == 1) {
-    condition = false;
+   if (digitalRead(inPin) == 1) {
+   condition = false;
   }
   //Blynk.logEvent("12");
 }
 
-
+//Detection of soil moisture
 void Soilmoisture() {
   soilMoistureValue = analogRead(A0);  
-    humidity = map(soilMoistureValue, WaterValue, AirValue, 0, 100);
+  humidity = map(soilMoistureValue, WaterValue, AirValue, 0, 100);
   humiditys = 100 - humidity;
   Serial.print("soil moisture： ");
   Serial.print(humiditys);
@@ -72,10 +73,9 @@ void Soilmoisture() {
 
 
 void setup() {
- 
   Serial.begin(115200);
   Blynk.begin(auth, ssid, pass);
-  timer.setInterval(1000L, myTimerEvent);
+  timer.setInterval(1000L, myTimerEvent);  // Setup a function to be called every second
   pinMode(inPin, INPUT);
   pinMode(modePin, OUTPUT);
   pinMode(Control, OUTPUT);
@@ -85,6 +85,6 @@ void setup() {
 
 void loop() {
   Blynk.run();
-  timer.run();  
+  timer.run();  // Initiates BlynkTimer
   Soilmoisture();
 }
